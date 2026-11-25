@@ -1,0 +1,81 @@
+.rb-auth, .rb-dash {
+  --rb-ink: #143b39;
+  --rb-mint: #0c5b5b;
+  --rb-muted: #48635e;
+  --rb-cream: #fffdf5;
+  --rb-line: #d6e4d9;
+  color: var(--rb-ink);
+  padding-block: clamp(2rem, 6vw, 5rem);
+}
+.rb-auth *, .rb-dash * { box-sizing: border-box; }
+.rb-auth { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(1.25rem, 4vw, 3rem); align-items: center; }
+.rb-auth-intro { background: #d9f2e6; border-radius: 1.5rem; padding: clamp(1.5rem, 5vw, 4rem); }
+.rb-auth-intro h1, .rb-heading h1 { font-size: clamp(2.15rem, 5vw, 4rem); line-height: 1.02; letter-spacing: -.045em; margin: .4em 0 .25em; overflow-wrap: anywhere; }
+.rb-auth-intro p, .rb-heading p { margin: .5rem 0 0; color: var(--rb-muted); }
+.rb-kicker { display: block; color: var(--rb-mint); font-size: .72rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+.rb-panel { background: var(--rb-cream); border: 1px solid var(--rb-line); border-radius: 1.2rem; }
+.rb-auth-panel, .rb-editor, .rb-chart, .rb-empty { padding: clamp(1rem, 3vw, 2rem); }
+.rb-auth-tabs, .rb-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.rb-auth-tabs { margin-bottom: 1.25rem; }
+.rb-form { display: grid; gap: 1rem; }
+.rb-form h2, .rb-section-head h2 { margin: 0; font-size: clamp(1.25rem, 3vw, 1.6rem); }
+.rb-form label { display: grid; gap: .4rem; min-width: 0; font-weight: 700; }
+.rb-form input, .rb-form textarea { width: 100%; min-width: 0; padding: .7rem .8rem; border: 1px solid #a6bfb3; border-radius: .65rem; font: inherit; font-weight: 400; background: #fff; color: var(--rb-ink); }
+.rb-form input[readonly] { background: #edf4ef; }
+.rb-form textarea { resize: vertical; }
+.rb-form small, .rb-sidebar small { color: var(--rb-muted); font-weight: 400; }
+.rb-auth .btn, .rb-dash .btn { cursor: pointer; }
+.rb-auth :focus-visible, .rb-dash :focus-visible { outline: 2px solid var(--rb-mint); outline-offset: 3px; }
+.rb-auth :disabled, .rb-dash :disabled { opacity: .55; cursor: not-allowed; }
+.rb-status { color: #9a322d; overflow-wrap: anywhere; margin: 0; }
+.rb-status:empty { display: none; }
+.rb-dash { display: grid; grid-template-columns: minmax(10rem, 14rem) minmax(0, 1fr); gap: clamp(1rem, 3vw, 2.5rem); align-items: start; }
+.rb-sidebar { padding: 1rem; display: grid; gap: .45rem; overflow-wrap: anywhere; }
+.rb-sidebar nav { display: grid; gap: .3rem; margin: .75rem 0; }
+.rb-sidebar nav button { border: 0; background: transparent; color: var(--rb-mint); border-radius: .6rem; padding: .65rem .75rem; font: inherit; font-weight: 700; text-align: left; cursor: pointer; }
+.rb-sidebar nav button:hover { background: #e3f3e9; }
+.rb-sidebar nav button[aria-current] { color: #fff; background: var(--rb-mint); }
+.rb-heading { margin-bottom: 1.5rem; }
+.rb-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin-bottom: 1rem; }
+.rb-metric { background: #d8f1e4; border-radius: 1rem; padding: clamp(.6rem, 3vw, 1.4rem); overflow-wrap: anywhere; }
+.rb-metric:nth-child(2) { background: #f8edd3; }
+.rb-metric:nth-child(3) { background: #efebfb; }
+.rb-metric span { font-weight: 700; }
+.rb-metric strong { display: block; font-size: clamp(1.35rem, 4vw, 2.6rem); line-height: 1.2; margin-top: .3rem; }
+.rb-section-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem; margin-bottom: .8rem; }
+.rb-legend { display: flex; gap: 1rem; flex-wrap: wrap; font-size: .85rem; }
+.rb-legend span::before { display: inline-block; content: ''; width: .7em; height: .7em; border-radius: 50%; background: var(--rb-mint); margin-right: .35em; }
+.rb-legend span + span::before { background: #7f64a8; }
+.rb-chart-row { padding-block: .65rem; border-top: 1px solid var(--rb-line); overflow-wrap: anywhere; }
+.rb-bar-line { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .6rem; align-items: center; color: var(--rb-muted); font-size: .8rem; }
+.rb-bar-line meter { width: 100%; height: .85rem; accent-color: var(--rb-mint); }
+.rb-bar-line + .rb-bar-line meter { accent-color: #7f64a8; }
+.rb-bar-line meter::-webkit-meter-bar { background: #e7ede6; border: 0; border-radius: .5rem; }
+.rb-bar-line meter::-webkit-meter-optimum-value { background: var(--rb-mint); }
+.rb-bar-line + .rb-bar-line meter::-webkit-meter-optimum-value { background: #7f64a8; }
+.rb-bar-line meter::-moz-meter-bar { background: var(--rb-mint); }
+.rb-bar-line + .rb-bar-line meter::-moz-meter-bar { background: #7f64a8; }
+.rb-campaigns { display: grid; gap: .75rem; }
+.rb-campaign { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .85rem; padding: 1rem; overflow-wrap: anywhere; }
+.rb-campaign h3 { margin: .3rem 0; }
+.rb-campaign p { margin: .25rem 0; color: var(--rb-muted); font-size: .9rem; }
+.rb-dash .rb-danger { color: #9a322d; }
+.rb-editor { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.rb-full { grid-column: 1 / -1; }
+.rb-frames { display: flex; flex-wrap: wrap; gap: .75rem; padding: 0; list-style: none; margin: .75rem 0 0; }
+.rb-frames li { display: grid; gap: .4rem; justify-items: center; padding: .5rem; border: 1px solid var(--rb-line); border-radius: .65rem; font-size: .8rem; }
+.rb-frames img, .rb-frame-placeholder { width: 88px; height: 88px; object-fit: contain; border-radius: .3rem; background: repeating-conic-gradient(#e7eee8 0% 25%, #fff 0% 50%) 50% / 16px 16px; }
+.rb-frame-actions { display: flex; gap: .25rem; }
+.rb-frame-actions button { background: #fff; border: 1px solid #a6bfb3; color: var(--rb-mint); border-radius: .3rem; width: 2rem; height: 2rem; font: inherit; font-weight: 700; cursor: pointer; }
+.rb-table { overflow-x: auto; }
+.rb-table table { width: 100%; border-collapse: collapse; text-align: left; }
+.rb-table th, .rb-table td { padding: .8rem 1rem; }
+.rb-table td { border-top: 1px solid var(--rb-line); }
+@media (max-width: 720px) {
+  .rb-auth, .rb-dash { grid-template-columns: minmax(0, 1fr); }
+  .rb-sidebar nav { display: flex; flex-wrap: wrap; }
+  .rb-logout { justify-self: start; }
+}
+@media (max-width: 460px) {
+  .rb-editor { grid-template-columns: minmax(0, 1fr); }
+}

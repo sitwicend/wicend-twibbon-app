@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-label="Hari Bumi — Satu Bumi untuk Semua">
+<path d="M0 0h310q-101 27-151 101Q66 111 0 216Zm1200 0h-175q114 62 175 189Z" fill="#e3ed94"/>
+<path d="M32 255V117h135M1034 118h133v137M32 900v140m1135-140v140" fill="none" stroke="#5b8c45" stroke-width="7"/>
+<path d="M0 1010q187-71 376 3 206 82 387-3 209-94 437 10v180H0Z" fill="#a5cc63"/><path d="M0 1074q156-64 354-12 191 47 364-9 265-81 482 32v115H0Z" fill="#e3ed94"/>
+<g transform="translate(997 1018)"><circle r="91" fill="#edf6b5" stroke="#32563c" stroke-width="5"/><circle r="70" fill="#78b491"/><path d="M-64-22-41-48l26 3 14 19-21 19 15 19-9 23-18-14-8-18-20-6Zm85-44 24 15 15 19-10 16-23-2-14 16 7 19 26 7 13 14-25 24-14-21-26-35 6-25Z" fill="#dce994"/><path d="M-77 1q75 33 153-3M0-72q-56 70 0 144m0-144q56 70 0 144" fill="none" stroke="#355e49" stroke-width="2" opacity=".5"/></g>
+<text x="74" y="1128" fill="#294d36" font-family="system-ui,sans-serif" font-weight="900" font-size="77">HARI BUMI</text><text x="79" y="1170" fill="#34543c" font-family="system-ui,sans-serif" font-weight="750" font-size="21" letter-spacing="5">SATU BUMI UNTUK SEMUA</text>
+</svg>

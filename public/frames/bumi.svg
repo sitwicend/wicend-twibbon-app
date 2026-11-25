@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-label="Hari Bumi">
+<defs><linearGradient id="g" x2="1" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#185d43"/><stop offset="1" stop-color="#10382f"/></linearGradient><path id="leaf" d="M0 0Q14-90 115-115 104-19 0 0Z"/></defs>
+<rect x="14" y="14" width="1172" height="1172" fill="none" stroke="#a8df80" stroke-width="28"/>
+<path d="M0 0h253Q180 60 103 73 48 83 0 174Z" fill="#1e664a"/><path d="M1200 1200H0V1000q194 83 415 77c355-9 536-80 785-37Z" fill="url(#g)"/><path d="M0 1058q233 71 449 44c350-44 549-65 751-19" fill="none" stroke="#b5eb83" stroke-width="3"/>
+<g transform="translate(1020 1100)"><path d="M-28 30Q41-57 107-162" fill="none" stroke="#dcf6ab" stroke-width="5"/><use href="#leaf" fill="#b5eb83" transform="translate(18 -40) rotate(-75) scale(.8)"/><use href="#leaf" fill="#6fb878" transform="translate(32 -53) rotate(32) scale(.83)"/><use href="#leaf" fill="#dcf6ab" transform="translate(72 -112) rotate(-42) scale(.58)"/></g>
+<text x="76" y="1136" fill="#f2ffc9" font-family="system-ui,sans-serif" font-weight="900" font-size="78" letter-spacing="1">HARI BUMI</text><text x="82" y="1171" fill="#b5eb83" font-family="system-ui,sans-serif" font-weight="700" font-size="20" letter-spacing="5">RAWAT RUMAH KITA BERSAMA</text>
+<path d="M1092 85q5 25 30 30-25 5-30 30-5-25-30-30 25-5 30-30Z" fill="#bfec87"/>
+</svg>

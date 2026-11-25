@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-label="Dirgahayu Indonesia">
+<defs><pattern id="p" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M21 1 41 21 21 41 1 21Zm0 9 11 11-11 11-11-11Z" fill="none" stroke="#fff4dc" stroke-width="2" opacity=".34"/></pattern></defs>
+<path d="M0 0h1200v23H0Zm0 0h22v1200H0Zm1178 0h22v1200h-22Z" fill="#bf333d"/>
+<path d="M0 0h292Q204 93 104 77 34 96 0 151Z" fill="#ef6864"/><path d="M0 44q62 1 129-12T285 5q-72 76-170 78Q53 75 0 134Z" fill="#fff3df"/>
+<path d="M0 1012q206-54 448 25 268 89 752-27v190H0Z" fill="#ffe6ce"/><path d="M0 1065q229-51 448 6 346 89 752-23v152H0Z" fill="#b82e39"/><path d="M873 1096q161-3 327-48v152H873Z" fill="url(#p)"/>
+<g transform="translate(1010 1015) rotate(12)"><path d="M0 98V-112" stroke="#7c2430" stroke-width="9" stroke-linecap="round"/><path d="M5-102q53-26 106 0 25 12 53 5v103q-28 7-53-5Q58-25 5 1Z" fill="#fff3df"/><path d="M5-102q53-26 106 0 25 12 53 5v52q-28 7-53-5Q58-76 5-50Z" fill="#db4049"/></g>
+<text x="70" y="1134" fill="#fff4df" font-family="system-ui,sans-serif" font-weight="900" font-size="65">DIRGAHAYU INDONESIA</text><text x="76" y="1173" fill="#ffc3b1" font-family="system-ui,sans-serif" font-weight="750" font-size="20" letter-spacing="6">17 AGUSTUS • MERDEKA!</text>
+</svg>

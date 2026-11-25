@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-label="Ayo Belajar">
+<defs><pattern id="grid" width="29" height="29" patternUnits="userSpaceOnUse"><path d="M29 0H0v29" fill="none" stroke="#b6d7ff" stroke-width="2" opacity=".42"/></pattern><path id="spark" d="M0-30Q5-5 30 0 5 5 0 30-5 5-30 0-5-5 0-30Z"/></defs>
+<path d="M0 0h220v26H26v194H0Zm1200 0H980v26h194v194h26Z" fill="#466ac7"/>
+<path d="M0 0h147v147H0Zm1053 0h147v147h-147Z" fill="url(#grid)"/><use href="#spark" x="88" y="85" fill="#f1bf62"/><use href="#spark" x="1110" y="86" fill="#9bc7ff"/>
+<path d="M0 1009q291 65 561 23 323-49 639-8v176H0Z" fill="#9ec9fc"/><path d="M0 1054q292 46 564 8 358-49 636-1v139H0Z" fill="#2e4b9b"/><path d="M903 1070q165-29 297-9v139H903Z" fill="url(#grid)"/>
+<g transform="translate(1036 1050) rotate(-8)"><path d="M0 44q-46-31-104-14V-69Q-53-90 0-57q52-33 104-12v99Q50 15 0 44Z" fill="#ffe1a0" stroke="#233c7b" stroke-width="7" stroke-linejoin="round"/><path d="M0-56V43M-83-51q34-6 62 12m-62 9q34-6 62 12m42-21q29-18 62-12M21-18q29-18 62-12" fill="none" stroke="#b67a4d" stroke-width="4" stroke-linecap="round"/></g>
+<use href="#spark" transform="translate(932 935) scale(.65)" fill="#f5be61"/><use href="#spark" transform="translate(1117 943) scale(.38)" fill="#a7cfff"/>
+<text x="74" y="1138" fill="#f5faff" font-family="system-ui,sans-serif" font-size="78" font-weight="900">AYO BELAJAR</text><text x="79" y="1175" fill="#c5dcff" font-family="system-ui,sans-serif" font-size="20" font-weight="750" letter-spacing="5">RASA INGIN TAHU, LANGKAH BARU</text>
+</svg>
