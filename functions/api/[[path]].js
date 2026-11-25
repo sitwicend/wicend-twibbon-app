@@ -151,17 +151,39 @@ const publicUser = ({ id, name, email, role, created_at }) => ({ id, name, email
 const cookieToken = /^[A-Za-z0-9._~-]{1,3800}$/;
 
 function supabase(env) {
-  const url = new URL(env.SUPABASE_URL);
-  if (url.protocol !== 'https:' || url.username || url.password || !env.SUPABASE_ANON_KEY || !env.SUPABASE_SERVICE_ROLE_KEY) throw new Error('Invalid Supabase configuration');
+  const missing = ['SUPABASE_URL', 'SUPABASE_ANON_KEY', 'SUPABASE_SERVICE_ROLE_KEY'].filter(name => typeof env[name] !== 'string' || !env[name].trim());
+  if (missing.length) fail(500, `CONFIG_MISSING: Variabel Cloudflare belum terbaca: ${missing.join(', ')}. Tambahkan di Settings → Variables and Secrets → Production, lalu deploy ulang.`);
+  let url;
+  try { url = new URL(env.SUPABASE_URL.trim()); } catch { fail(500, 'CONFIG_URL: SUPABASE_URL tidak valid. Gunakan format https://KODE-PROYEK.supabase.co'); }
+  if (url.protocol !== 'https:' || url.username || url.password || (url.pathname !== '/' && url.pathname !== '')) fail(500, 'CONFIG_URL: SUPABASE_URL harus persis https://KODE-PROYEK.supabase.co tanpa /rest/v1 atau path lain.');
+  for (const name of ['SUPABASE_ANON_KEY', 'SUPABASE_SERVICE_ROLE_KEY']) {
+    if (/\s|^["']|["']$/.test(env[name])) fail(500, `CONFIG_KEY: ${name} mengandung spasi, baris baru, atau tanda kutip. Tempel ulang nilainya saja.`);
+  }
+  const role = token => { try { return JSON.parse(atob(token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))).role ?? null; } catch { return null; } };
+  const anonRole = role(env.SUPABASE_ANON_KEY), serviceRole = role(env.SUPABASE_SERVICE_ROLE_KEY);
+  if (serviceRole === 'anon') fail(500, 'CONFIG_KEY: SUPABASE_SERVICE_ROLE_KEY berisi key anon. Gunakan key legacy service_role (baris bawah di Supabase API Keys).');
+  if (anonRole === 'service_role') fail(500, 'CONFIG_KEY: SUPABASE_ANON_KEY berisi key service_role. Gunakan key legacy anon (baris atas di Supabase API Keys).');
   async function call(prefix, path, key, { token = key, method = 'GET', data, params, prefer } = {}) {
     const target = new URL(`${prefix}/${path}`, url.origin);
     if (params) target.search = new URLSearchParams(params).toString();
     const headers = { apikey: key, Authorization: `Bearer ${token}`, Accept: 'application/json' };
     if (data !== undefined) headers['Content-Type'] = 'application/json';
     if (prefer) headers.Prefer = prefer;
-    const response = await fetch(target, { method, headers, body: data === undefined ? undefined : JSON.stringify(data), redirect: 'error', signal: AbortSignal.timeout(15000) });
+    let response;
+    try {
+      response = await fetch(target, { method, headers, body: data === undefined ? undefined : JSON.stringify(data), redirect: 'error', signal: AbortSignal.timeout(15000) });
+    } catch (error) {
+      console.error('Supabase fetch failed', target.pathname, error?.message);
+      fail(502, 'SUPABASE_UNREACHABLE: Tidak dapat menghubungi Supabase. Cek SUPABASE_URL dan pastikan proyek tidak Paused.');
+    }
     const raw = await response.text();
-    return { status: response.status, ok: response.ok, value: raw ? JSON.parse(raw) : null };
+    let value = null;
+    try { value = raw ? JSON.parse(raw) : null; } catch { value = { message: raw.slice(0, 200) }; }
+    if (response.status === 401 && /invalid api key|no api key|jwt|signature/i.test(`${value?.message ?? ''} ${value?.hint ?? ''}`)) {
+      console.error('Supabase rejected key', prefix, response.status, value?.message);
+      fail(502, `SUPABASE_KEY: Supabase menolak ${prefix === '/rest/v1' ? 'SUPABASE_SERVICE_ROLE_KEY' : 'SUPABASE_ANON_KEY'}. Pastikan key berasal dari proyek yang sama dengan SUPABASE_URL, lalu deploy ulang.`);
+    }
+    return { status: response.status, ok: response.ok, value };
   }
   return {
     auth: (path, options) => call('/auth/v1', path, env.SUPABASE_ANON_KEY, options),
@@ -172,7 +194,9 @@ function supabase(env) {
 function dbResult(result) {
   if (!result.ok) {
     if (result.value?.code === '23505') fail(409, 'Slug already exists.');
-    fail(502, 'Database request failed. Please try again.');
+    console.error('Supabase database error', result.status, result.value?.code, result.value?.message);
+    const code = typeof result.value?.code === 'string' ? result.value.code.replace(/[^A-Za-z0-9_]/g, '').slice(0, 12) : String(result.status);
+    fail(502, `DATABASE_ERROR (${code}): Permintaan database gagal. Pastikan migrasi SQL sudah dijalankan pada proyek Supabase ini.`);
   }
   return result.value;
 }
@@ -332,6 +356,7 @@ export async function onRequest({ request, env }) {
     fail(404, 'API route not found.');
   } catch (error) {
     if (error instanceof HttpError) return reply(error.status, { error: error.message });
-    return reply(502, { error: 'Service temporarily unavailable.' });
+    console.error('Unhandled API error', error?.name, error?.message);
+    return reply(502, { error: `UNEXPECTED: Service temporarily unavailable (${String(error?.name ?? 'Error').slice(0, 40)}).` });
   }
 }
